@@ -2,13 +2,25 @@ package next.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 
 import next.model.Question;
+import next.model.User;
 import core.jdbc.JdbcTemplate;
 import core.jdbc.RowMapper;
 
 public class QuestionDao {
+	
+	public void insert(Question question) {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+        String sql = "INSERT INTO QUESTIONS(writer, title, contents, createdDate) VALUES (?, ?, ?, ?)";
+        jdbcTemplate.update(sql, question.getWriter(),
+        		question.getTitle(),
+        		question.getContents(),
+        		question.getCreatedDate());
+        
+    }
 	public List<Question> findAll() {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 		String sql = "SELECT questionId, writer, title, createdDate, countOfAnswer FROM QUESTIONS "
