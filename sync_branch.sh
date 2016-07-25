@@ -1,4 +1,5 @@
 #!/bin/bash
+#test
 
 REPOSITORY_DIR=~/jwp-workspace/cherry-pick/jwp-basic
 
